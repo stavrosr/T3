@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head prefix="og: http://ogp.me/ns#">
+    <title>Tic Tac Toe</title>
+    <meta property="og:title" itemprop="name" content="Tic Tac Toe" />
+    <meta property="og:image" content="https://rousopoulos.com/t3/images/title.png" />
+    <link itemprop="image" href="//rousopoulos.com/t3/images/title.png" rel="icon" />
+    <meta property="og:url" content="//rousopoulos.com/t3/default.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="rousopoulos.com" />
+    <meta property="og:description" itemprop="description" content="This is Steve's TicTacToe game" />
+    <meta name="description" content="This is Steve's TicTacToe game" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+    <script src="js/t3.js" type="text/javascript"></script>
+</head>
+<body ng-app="T3App">
+    <div id="Body" class="Grid">
+        <div id="Top" class="Row">
+            <div class="Cell"></div>
+        </div>
+        <div id="Main" class="Row">
+            <div class="Cell">
+                <div ui-view></div>
+            </div>
+        </div>
+        <div id="Footer" class="Row">
+            <div class="Cell">
+                &copy; Copyright 2016 Rousopoulos.com
+            </div>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="/home.html">
+        <div id="Title" class="Grid">
+            <div class="Row">
+                <div class="Cell Left"></div>
+                <div class="Cell" id="TitleCell">
+                    <img src="images/title.png" alt="Tic Tac Toe" />
+                </div>
+                <div class="Cell Right"></div>
+            </div>
+            <div class="Row Bottom">
+                <div class="Cell Left"></div>
+                <div class="Cell"></div>
+                <div class="Cell Right"></div>
+            </div>
+        </div>
+        <div id="Navigation" class="Grid">
+            <div class="Row Top">
+                <div class="Cell Left"></div>
+                <div class="Cell"></div>
+                <div class="Cell Right"></div>
+            </div>
+            <div class="Row">
+                <div class="Cell Left"></div>
+                <div class="Cell">
+                    <a href="#/board">Play</a>
+                    <a href="#/settings">Settings</a>
+                    <a href="#/about">About</a>
+                </div>
+                <div class="Cell Right"></div>
+            </div>
+            <div class="Row Bottom">
+                <div class="Cell Left"></div>
+                <div class="Cell"></div>
+                <div class="Cell Right"></div>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="/board.html">
+        <div id="GameArea" class="MainArea">
+            <div class="Board Grid" ng-class="{Thinking: GameStatus === 'Thinking'}">
+                <div class="Row Top">
+                    <div class="Cell Left" ng-class="{UserStyle: Board[0] === UserShape, CompStyle: Board[0] === ComputerShape}" ng-click="RegisterClick(0);">{{ Board[0] }}</div>
+                    <div class="Cell" ng-class="{UserStyle: Board[1] === UserShape, CompStyle: Board[1] === ComputerShape}" ng-click="RegisterClick(1);">{{ Board[1] }}</div>
+                    <div class="Cell Right" ng-class="{UserStyle: Board[2] === UserShape, CompStyle: Board[2] === ComputerShape}" ng-click="RegisterClick(2);">{{ Board[2] }}</div>
+                </div>
+                <div class="Row">
+                    <div class="Cell Left" ng-class="{UserStyle: Board[3] === UserShape, CompStyle: Board[3] === ComputerShape}" ng-click="RegisterClick(3);">{{ Board[3] }}</div>
+                    <div class="Cell" ng-class="{UserStyle: Board[4] === UserShape, CompStyle: Board[4] === ComputerShape}" ng-click="RegisterClick(4);">{{ Board[4] }}</div>
+                    <div class="Cell Right" ng-class="{UserStyle: Board[5] === UserShape, CompStyle: Board[5] === ComputerShape}" ng-click="RegisterClick(5);">{{ Board[5] }}</div>
+                </div>
+                <div class="Row Bottom">
+                    <div class="Cell Left" ng-class="{UserStyle: Board[6] === UserShape, CompStyle: Board[6] === ComputerShape}" ng-click="RegisterClick(6);">{{ Board[6] }}</div>
+                    <div class="Cell" ng-class="{UserStyle: Board[7] === UserShape, CompStyle: Board[7] === ComputerShape}" ng-click="RegisterClick(7);">{{ Board[7] }}</div>
+                    <div class="Cell Right" ng-class="{UserStyle: Board[8] === UserShape, CompStyle: Board[8] === ComputerShape}" ng-click="RegisterClick(8);">{{ Board[8] }}</div>
+                </div>
+            </div>
+            <div class="MessageRow">
+                <div class="Message">{{ Message }}</div>
+            </div>
+            <div class="ButtonRow">
+                <a href="#/home"><div class="Button">Back</div></a>
+                <div ng-click="Play();" class="Button">New Game</div>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="/about.html">
+        <div id="AboutArea" class="MainArea">
+            <div>
+                About
+            </div>
+            <div class="MessageRow">
+                <div class="Message">
+                    <p>This game was designed for my niece, Phoebe!</p>
+                    <p>And also an excuse to play with <a href="https://angularjs.org/">AngularJS.</a></p>
+                </div>
+            </div>
+            <div class="ButtonRow">
+                <a href="#/home"><div class="Button">Back</div></a>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="/settings.html">
+        <div id="SettingsArea" class="MainArea">
+            <div>
+                Settings
+            </div>
+            <div class="MessageRow">
+                <div class="Message">
+                    <p>
+                        Difficulty:
+                        <input type="radio" name="rdbDifficulty" id="rdbEasy" ng-model="Difficulty" ng-change="SetDifficulty()" value="0" />
+                        <label for="rdbEasy">Easy</label>
+                        <input type="radio" name="rdbDifficulty" id="rdbDifficult" ng-model="Difficulty" ng-change="SetDifficulty()" value="1" />
+                        <label for="rdbDifficult">Difficult</label>
+                    </p>
+                </div>
+            </div>
+            <div class="ButtonRow">
+                <a href="#/home"><div class="Button">Back</div></a>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

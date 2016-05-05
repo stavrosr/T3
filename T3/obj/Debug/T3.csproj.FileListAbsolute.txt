@@ -1,0 +1,6 @@
+C:\Users\srousopo\Documents\Visual Studio 2013\Projects\T3\T3\obj\Debug\T3.csprojResolveAssemblyReference.cache
+C:\Users\srousopo\Documents\Visual Studio 2013\Projects\T3\T3\bin\T3.dll.config
+C:\Users\srousopo\Documents\Visual Studio 2013\Projects\T3\T3\bin\T3.dll
+C:\Users\srousopo\Documents\Visual Studio 2013\Projects\T3\T3\bin\T3.pdb
+C:\Users\srousopo\Documents\Visual Studio 2013\Projects\T3\T3\obj\Debug\T3.dll
+C:\Users\srousopo\Documents\Visual Studio 2013\Projects\T3\T3\obj\Debug\T3.pdb

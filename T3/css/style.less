@@ -1,0 +1,225 @@
+﻿@Primary-Background-Color: #fff8e3;
+@Primary-Font-Color: #33332d;
+@Accent1: #cccc9f;
+@Accent2: #9fb4cc;
+@Accent3: #db4105;
+@BorderColor: @Accent3;
+
+.Grid {
+    display: table;
+    .Row {
+        display: table-row;
+        .Cell {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
+}
+
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    background-color: @Primary-Background-Color;
+    color: @Primary-Font-Color;
+    font-family: Arial;
+    padding: 0;
+    margin: 0;
+}
+
+#Body {
+    height: 100%;
+    width: 100%;
+
+    #Top {
+        background-color: @Primary-Font-Color;
+        height: 20px;
+    }
+    #Main {
+        height: 100%;
+
+        #Title {
+            background-color: @Accent3;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            margin-left: -100px;
+            width: 200px;
+            height: 165px;
+            display: table;
+
+            .Row {
+                height: 160px;
+                &.Bottom {
+                    height: 4px;
+                    .Cell {
+                        height: 4px;
+                        border-top: 1px solid @Accent1;
+                    }
+                }
+                .Cell {
+                    height: 40px;
+                    &.Left {
+                        width: 4px;
+                        border-right: 1px solid @Accent1;
+                    }
+                    &.Right {
+                        width: 4px;
+                        border-left: 1px solid @Accent1;
+                    }
+                    &#TitleCell {
+                        vertical-align: bottom;
+                        text-align: left;
+                    }
+                }
+            }
+
+        }
+        #Navigation {
+            background-color: @Accent2;
+            height: 50px;
+            width: 100%;
+            position: fixed;
+            top: 50%;
+            margin-top: -25px;
+            display: table;
+
+            .Row {
+                height: 40px;
+                &.Top {
+                    height: 4px;
+                    .Cell {
+                        height: 4px;
+                        border-bottom: 1px solid @Accent1;
+                    }
+                }
+                &.Bottom {
+                    height: 4px;
+                    .Cell {
+                        height: 4px;
+                        border-top: 1px solid @Accent1;
+                    }
+                }
+                .Cell {
+                    height: 40px;
+                    &.Left {
+                        width: 4px;
+                        border-right: 1px solid @Accent1;
+                    }
+                    &.Right {
+                        width: 4px;
+                        border-left: 1px solid @Accent1;
+                    }
+                }
+            }
+
+            a {
+                color: @Primary-Font-Color;
+                text-transform: uppercase;
+                text-decoration: none;
+                display: inline-block;
+                width: 32%;
+                &:hover {
+                    color: @Primary-Background-Color;
+                }
+            }
+        }
+        .MainArea {
+            .MessageRow {
+                clear: left;
+                padding: 8px;
+                .Message {
+                    border: solid 2px @Accent2;
+                    padding: 8px;
+                    background-color: #ffffff;
+                    width: 226px;
+                    margin: 0 auto;
+                }
+            }
+        }
+        #GameArea {
+            .Board {
+                background-color: #ffffff;
+                margin: 0 auto;
+                border: solid 2px @Accent1;
+                .Row {
+                    &.Top {
+                        .Cell {
+                            border-bottom: 1px solid @Primary-Font-Color;
+                        }
+                    }
+                    &.Bottom {
+                        .Cell {
+                            border-top: 1px solid @Primary-Font-Color;
+                        }
+                    }
+                    .Cell {
+                        height: 40px;
+                        width: 40px;
+                        text-align: center;
+                        line-height: 40px;
+                        cursor: pointer;
+                        font-weight: bold;
+                        font-family: 'Arial Black', Arial;
+
+                        &.Left {
+                            border-right: 1px solid @Primary-Font-Color;
+                        }
+                        &.Right {
+                            border-left: 1px solid @Primary-Font-Color;
+                        }
+                        &.UserStyle {
+                            color: #33cc33;
+                        }
+                        &.CompStyle {
+                            color: #cc3333;
+                        }
+                    }
+                }
+
+                &.Thinking .Row .Cell {
+                    cursor: wait;
+                }
+            }
+        }
+    }
+    #Footer {
+        height: 30px;
+        font-size: .7em;
+        }
+    
+}
+
+.ButtonRow {
+    text-align: center;
+    padding: 8px;
+}
+.Button {
+    background-color: @Accent3;
+    color: #ffffff;
+    padding: 4px 8px;
+    display: inline-block;
+    cursor: pointer;
+
+    .3d(@Accent3);
+}
+
+.3d(@BorderColor){
+    border-top: 1px solid @BorderColor;
+    border-right: 1px solid @BorderColor;
+    border-bottom: 1px solid @BorderColor;
+    border-left: 1px solid @BorderColor;
+
+    &:hover {
+    border-right: 1px solid darken(@BorderColor, 15%);
+    border-bottom: 1px solid darken(@BorderColor, 15%);
+    }
+    &:active {
+    border-top: 1px solid darken(@BorderColor, 15%);
+    border-left: 1px solid darken(@BorderColor, 15%);
+    border-right: 1px solid @BorderColor;
+    border-bottom: 1px solid @BorderColor;
+    }
+}
